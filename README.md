@@ -5,21 +5,31 @@
 Gets the base package name for a module path in a require statement. Assumes the path [is not relative](https://www.npmjs.com/package/relative-require-regex).
 
 ```js
-var base = require('require-package-name')
+var name = require('require-package-name')
 
-base('events')                  => 'events'
-base('events/')                 => 'events'
-base('events/index.js')         => 'events'
-base('@username/button/a.js')   => 'button'
+//get the module name for a require path
+name('events')                  => 'events'
+name('events/')                 => 'events'
+name('events/index.js')         => 'events'
+name('@username/button/a.js')   => '@username/button'
+name('@username//foo/a.js')     => '@username/foo'
+
+//or, get the base name excluding any scope
+name.base('@username/button/a.js')   => 'button'
+name.base('@username//foo/a.js')     => 'foo'
 ```
 
 ## Usage
 
 [![NPM](https://nodei.co/npm/require-package-name.png)](https://www.npmjs.com/package/require-package-name)
 
-#### `base = packageName(str)`
+#### `name = packageName(str)`
 
-Gets the `base` module name for a require string like `'url'` or `'events/'`.
+Gets the name of a module for a require string like `'url'` or `'events/'`.
+
+#### `base = packageName.base(str)`
+
+Gets the *base* name of a module. This is the same as above, except it excludes scoped usernames.
 
 ## License
 
