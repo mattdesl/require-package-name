@@ -25,7 +25,7 @@ name.base('@username//foo/a.js')     => 'foo'
 
 #### `name = packageName(str)`
 
-Gets the name of a module for a require string like `'url'` or `'events/'`.
+Gets the name of a module for a require string like `'xtend'` from `'xtend/mutable.js'`.
 
 #### `base = packageName.base(str)`
 
